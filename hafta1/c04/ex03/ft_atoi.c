@@ -10,47 +10,42 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+int	ft_str_is_number(char ch)
 {
-	unsigned int	idx;
+	if ((ch >= '0' && ch <= '9'))
+		return (1);
+	else
+		return (0);
+}
+
+int	ft_atoi(char *src)
+{
+	int				idx;
+	unsigned int	no_of_minus;
+	int				number;
 
 	idx = 0;
-	while (src[idx] != '\0' && idx < n)
+	no_of_minus = 0;
+	number = 0;
+	while (!ft_str_is_number(src[idx]))
 	{
-		dest[idx] = src[idx];
+		if (src[idx] == '-')
+			no_of_minus++;
 		idx++;
 	}
-	while (idx < n)
+	while (ft_str_is_number(src[idx]))
 	{
-		dest[idx] = '\0';
+		number = number * 10 + (src[idx] - '0');
 		idx++;
 	}
-	return (dest);
+	if (no_of_minus % 2 != 0)
+		number *= -1;
+	return (number);
 }
 
-int	ft_strlen(char *str)
+int	main()
 {
-	int	len;
-
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
-}
-
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
-{
-	unsigned int	len1;
-	unsigned int	len2;
-
-	len1 = ft_strlen(src);
-	len2 = ft_strlen(dest);
-	if (len2 < nb)
-		ft_strncpy(&dest[len1], src, nb);
-	else
-	{
-		ft_strncpy(&dest[len1], src, nb);
-		dest[len1 + nb] = '\0';
-	}
-	return (dest);
+	char deneme[] = "\t\v ---+--+1234ab567";
+	my_atoi(deneme);
+	ft_atoi(deneme);
 }
