@@ -31,14 +31,5 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		d[-1] = 0;
 	while (*s != '\0')
 		s++;
-
-	return s - src;
-}
-int main()
-{
-	char dest[] = "src sr src";
-	char src[] 	= "deneme deneme dest";
-
-	ft_strlcpy(dest, src, 11);
-
+	return (s - src);
 }

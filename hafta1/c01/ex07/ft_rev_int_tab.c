@@ -20,7 +20,7 @@ void	ft_rev_int_tab(int *tab, int size)
 
 	idx_rev = size - 1;
 	idx = 0;
-	while (idx_rev > size / 2)
+	while (idx_rev >= size / 2)
 	{
 		temp = tab[idx];
 		tab[idx] = tab[idx_rev];
@@ -39,13 +39,13 @@ void print(int* tab, int size)
 	
 }
 
-int main()
+int	main()
 {
-	int arr[5] = {1,2,3,4,5};
-	print(arr, 5);
-	ft_rev_int_tab(arr, 5);
+	int arr[6] = {1,2,3,4,5,6};
+	print(arr, 6);
+	ft_rev_int_tab(arr, 6);
 	printf("\n");
-	print(arr, 5);
+	print(arr, 6);
 
 	return 0;
 }

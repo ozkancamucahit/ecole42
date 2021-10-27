@@ -30,9 +30,3 @@ int	ft_str_is_lowercase(char *str)
 	}
 	return (result);
 }
-
-int main()
-{
-	char * str = "ZabcdF";
-	ft_str_is_lowercase(str);
-}

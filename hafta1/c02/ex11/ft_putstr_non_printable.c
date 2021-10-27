@@ -57,9 +57,3 @@ void	ft_putstr(char *str)
 		str++;
 	}
 }
-
-int	main(void)
-{
-	char	str[] = "d\nbir\viki\tuc";
-	ft_putstr(str);
-}

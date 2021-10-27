@@ -20,7 +20,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		dest[idx] = src[idx];
 		idx++;
 	}
-	while(idx < n)
+	while (idx < n)
 	{
 		dest[idx] = '\0';
 		idx++;
