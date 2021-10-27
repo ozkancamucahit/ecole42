@@ -22,23 +22,23 @@ int	ft_strlen(char *str)
 
 int	compare(char *str1, char *str2)
 {
-    while (*str1 && *str2)
-    {
-        if (*str1 != *str2)
-            return 0;
-        str1++;
-        str2++;
-    }
-    return (*str2 == '\0');
+	while (*str1 && *str2)
+	{
+		if (*str1 != *str2)
+			return (0);
+		str1++;
+		str2++;
+	}
+	return (*str2 == '\0');
 }
 
 char	*ft_strstr(char *str, char *to_find)
 {
 	while (*str != '\0')
-    {
-        if ((*str == *to_find) && compare(str, to_find))
-            return str;
-        str++;
-    }
-    return NULL;
+	{
+		if ((*str == *to_find) && compare(str, to_find))
+			return (str);
+		str++;
+	}
+	return (NULL);
 }
