@@ -40,12 +40,3 @@ char	*ft_strcat(char *dest, char *src)
 	ft_strcpy(&dest[ft_strlen(dest)], src);
 	return (dest);
 }
-
-int	main(void)
-{
-	char dest[32]= "I am inevitable ";
-	char src[]  = "I am IronMan";
-
-	ft_strcat(dest, src);
-	return 0;
-}

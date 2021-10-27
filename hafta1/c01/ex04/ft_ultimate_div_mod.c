@@ -16,7 +16,7 @@ void	ft_ultimate_div_mod(int *a, int *b)
 	int	res_mod;
 
 	res_div = *a / *b;
-	res_mod = *a / *b;
+	res_mod = *a % *b;
 	*a = res_div;
 	*b = res_mod;
 }

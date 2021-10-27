@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned char	*us1;
@@ -34,18 +31,4 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 		n--;
 	}
 	return (0);
-}
-
-int	main(void)
-{
-	int	res;
-	int	res2;
-	int	res3;
-
-	res = strncmp("klmnA", "klmnC", 4);
-	printf("res with STRNCMP :%d\n", res);
-	res2 = ft_strncmp("klmnA", "klmnC", 4);
-	printf("res with OWN :%d\n", res2);
-	res3 = strncmpOwn("klmnA", "klmnC", 4);
-	printf("res with OWN :%d\n", res3);
 }

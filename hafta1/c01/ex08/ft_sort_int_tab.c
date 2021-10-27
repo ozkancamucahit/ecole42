@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 void	ft_swap(int *a, int *b)
 {
 	int	temp;
@@ -38,24 +36,4 @@ void	ft_sort_int_tab(int *tab, int size)
 		}
 		iter++;
 	}
-}
-
-void print(int* tab, int size)
-{
-	for (int i = 0; i < size; i++)
-	{
-		printf("%d ", tab[i]);
-	}
-	
-}
-
-int main()
-{
-	int arr[6] = {7,2,5,1,8,4};
-	print(arr, 6);
-	ft_sort_int_tab(arr, 6);
-	printf("\n");
-	print(arr, 6);
-
-	return 0;
 }

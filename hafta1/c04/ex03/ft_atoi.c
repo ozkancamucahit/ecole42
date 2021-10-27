@@ -42,10 +42,3 @@ int	ft_atoi(char *src)
 		number *= -1;
 	return (number);
 }
-
-int	main()
-{
-	char deneme[] = "\t\v ---+--+1234ab567";
-	my_atoi(deneme);
-	ft_atoi(deneme);
-}

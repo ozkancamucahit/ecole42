@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 int	ft_strlen(char *str)
 {
 	int	len;
@@ -41,15 +40,5 @@ char	*ft_strstr(char *str, char *to_find)
             return str;
         str++;
     }
- 
     return NULL;
-	
 }
-
-int main(){    
-  char str[100]="this is javatpoint with c and java";    
-  char *sub;    
-  sub = ft_strstr(str,"java");    
-  printf("\nSubstring is: %s",sub);    
- return 0;    
-}  

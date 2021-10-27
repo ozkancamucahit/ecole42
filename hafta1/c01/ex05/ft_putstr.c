@@ -19,7 +19,7 @@ void	ft_putstr(char *str)
 	idx = 0;
 	while (str[idx] != '\0')
 	{
-		write(1, str, sizeof(char));
+		write(1, &str[idx], sizeof(char));
 		idx++;
 	}
 }

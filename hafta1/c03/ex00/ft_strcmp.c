@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-
 int	ft_strcmp(char *s1, char *s2)
 {
 	unsigned char	*us1;
@@ -26,15 +23,4 @@ int	ft_strcmp(char *s1, char *s2)
 		us2++;
 	}
 	return ((*us1 > *us2) - (*us1 < *us2));
-}
-
-int	main(void)
-{
-	int	res;
-	int	res2;
-
-	res = strcmp("bb", "aa");
-	printf("res with STRCMP :%d\n", res);
-	res2 = ft_strcmp("bb", "aa");
-	printf("res with OWN :%d\n", res2);
 }
