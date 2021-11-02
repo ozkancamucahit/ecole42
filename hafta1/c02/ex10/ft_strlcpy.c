@@ -33,3 +33,14 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		s++;
 	return (s - src);
 }
+
+int main(void)
+{
+	char dest[] = "Hello there.";
+	char src[] = "General kenobi";
+    unsigned int res = ft_strlcpy(dest, src, 15);
+
+	(void)res;
+ 
+    return 0;
+}

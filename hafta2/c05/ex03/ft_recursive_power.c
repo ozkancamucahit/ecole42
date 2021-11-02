@@ -14,7 +14,7 @@
 
 int	ft_recursive_power(int nb, int power)
 {
-	if (nb < 0)
+	if (power < 0)
 		return (0);
 	else if ((nb == 0 && power == 0) || power == 0)
 		return (1);
@@ -27,7 +27,19 @@ int	ft_recursive_power(int nb, int power)
 
 int main()
 {
-	int res = ft_recursive_power(6,1);
-	printf("result :%d\n", res);
-	return 0;
+	int res;
+
+	res = ft_recursive_power(-3, -1);
+	res = ft_recursive_power(-3, 0);
+	res = ft_recursive_power(-3, 1);
+	res = ft_recursive_power(-3, 2);
+	res = ft_recursive_power(-3, 3);
+	res = ft_recursive_power(0, -1);
+	res = ft_recursive_power(0, 0);
+	res = ft_recursive_power(0, 2);
+	res = ft_recursive_power(4, -1);
+	res = ft_recursive_power(4, 0);
+	res = ft_recursive_power(4, 1);
+	res = ft_recursive_power(4, 2);
+	(void)res;
 }

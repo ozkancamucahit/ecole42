@@ -63,3 +63,13 @@ char	*ft_strcapitalize(char *str)
 	}
 	return (str);
 }
+
+int main(void)
+{
+	char str[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+    char * res = ft_strcapitalize(str);
+
+	(void)res;
+ 
+    return 0;
+}

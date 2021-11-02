@@ -13,9 +13,22 @@
 int	ft_strlen(char *str)
 {
 	int	len;
-
+	char * ref = str;
 	len = 0;
 	while (str[len] != '\0')
 		len++;
+	while (*str)
+		str++;
+	
+	int len2 = str - ref;
+	(void)len2;
 	return (len);
+}
+
+int main()
+{
+	char str [] = "abc";
+	int res = ft_strlen(str);
+
+	(void)res;
 }

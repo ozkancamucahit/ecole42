@@ -13,7 +13,8 @@
 #include <stdio.h>
 int	ft_fibonacci(int index)
 {
-
+    if (index < 0)
+        return (-1);
     if (index <= 1)
         return (index);
     else
@@ -22,7 +23,19 @@ int	ft_fibonacci(int index)
 
 int main()
 {    
-    int res = ft_fibonacci(3);
-    printf("Res : %d\n", res);    
+    int res;
+    res = ft_fibonacci(-10);
+    res = ft_fibonacci(-1);
+    res = ft_fibonacci(-3);
+    res = ft_fibonacci(0);
+    res = ft_fibonacci(1);
+    res = ft_fibonacci(2);
+    res = ft_fibonacci(3);
+    res = ft_fibonacci(4);
+    res = ft_fibonacci(5);
+    res = ft_fibonacci(6);
+    res = ft_fibonacci(7);
+    res = ft_fibonacci(8);
+    (void)res;
     return 0;    
 }  

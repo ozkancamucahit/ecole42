@@ -23,3 +23,12 @@ char	*ft_strcpy(char *dest, char *src)
 	dest[idx] = '\0';
 	return (dest);
 }
+
+int main()
+{
+	char source[] = "uzun bir string";
+    char destination[10];
+	ft_strcpy(destination, source);
+
+	return 0;
+}

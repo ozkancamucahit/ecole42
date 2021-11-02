@@ -38,7 +38,7 @@ void	ft_to_hex(char *buff, int x)
 	}
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr_non_printable(char *str)
 {
 	char	ch;
 	char	hex[2];
@@ -56,4 +56,14 @@ void	ft_putstr(char *str)
 		}
 		str++;
 	}
+}
+
+int main(void)
+{
+	char dest[] = "Hello\n lol \vnaber";
+    ft_putstr_non_printable(dest);
+
+	(void)dest;
+ 
+    return 0;
 }

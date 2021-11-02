@@ -10,24 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
-{
-	unsigned int	idx;
-
-	idx = 0;
-	while (src[idx] != '\0' && idx < n)
-	{
-		dest[idx] = src[idx];
-		idx++;
-	}
-	while (idx < n)
-	{
-		dest[idx] = '\0';
-		idx++;
-	}
-	return (dest);
-}
-
 int	ft_strlen(char *str)
 {
 	int	len;
@@ -40,17 +22,43 @@ int	ft_strlen(char *str)
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	unsigned int	len1;
-	unsigned int	len2;
+	char	*end;
+	int	idx;
 
-	len1 = ft_strlen(src);
-	len2 = ft_strlen(dest);
-	if (len2 < nb)
-		ft_strncpy(&dest[len1], src, nb);
-	else
+	idx = 0;
+	end = dest + ft_strlen(dest);
+	while (src[idx] != '\0' && nb)
 	{
-		ft_strncpy(&dest[len1], src, nb);
-		dest[len1 + nb] = '\0';
+		end[idx] = src[idx];
+		idx++;
+		nb--;
 	}
+	end[idx] = '\0';
 	return (dest);
+}
+
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	int	idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
+	{
+		write(1, &str[idx], sizeof(char));
+		idx++;
+	}
+}
+
+int main(void)
+{
+	char s1[20] = "hello there";
+    char s2[] = "general kenobi";
+
+	char * res = ft_strncat(s1, s2, 2);
+	ft_putstr(res);
+	(void)res;
+ 
+    return 0;
 }

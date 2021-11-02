@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+
 int	ft_number_of_digits(int nb)
 {
 	int	count;
@@ -27,12 +29,19 @@ int	ft_number_of_digits(int nb)
 
 void	ft_write_digits(int *buffer, int no_of_digits)
 {
-	int	idx;
+	int		idx;
+	char	digit;
 
+	if (no_of_digits == 0)
+	{
+		write(1, "0", sizeof (char));
+		return ;
+	}
 	idx = no_of_digits - 1;
 	while (idx >= 0)
 	{
-		write(1, &buffer[idx], 1);
+		digit = '0' + buffer[idx];
+		write(1, &digit, sizeof (char));
 		idx--;
 	}
 }
@@ -42,7 +51,6 @@ void	ft_split_number(int nb, int no_of_digits)
 	int	mod;
 	int	buffer[10];
 	int	idx;
-	int	ascii_value;
 
 	idx = 0;
 	while (idx < 10)
@@ -51,8 +59,7 @@ void	ft_split_number(int nb, int no_of_digits)
 	while (nb > 0)
 	{
 		mod = nb % 10;
-		ascii_value = '0' + mod;
-		buffer[idx++] = ascii_value;
+		buffer[idx++] = mod;
 		nb = nb / 10;
 	}
 	ft_write_digits(buffer, no_of_digits);
@@ -61,13 +68,10 @@ void	ft_split_number(int nb, int no_of_digits)
 void	ft_putnbr(int nb)
 {
 	int				no_of_digits;
-	int				min_int;
-	unsigned int	min_int_holder;
 
-	min_int = -2147483648;
-	if (nb == min_int)
+	if (nb == -2147483648)
 	{
-		write(1, "-2147483648", 12);
+		write(1, "-2147483648", 11);
 		return ;
 	}
 	if (nb < 0)
@@ -77,4 +81,12 @@ void	ft_putnbr(int nb)
 	}
 	no_of_digits = ft_number_of_digits(nb);
 	ft_split_number(nb, no_of_digits);
+}
+
+int main()
+{
+	ft_putnbr(-2147483648);
+	ft_putnbr(-21);
+	ft_putnbr(21);
+	ft_putnbr(0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_str_is_lowercase(char *str)
+int	ft_str_is_uppercase(char *str)
 {
 	int		idx;
 	int		result;
@@ -29,4 +29,14 @@ int	ft_str_is_lowercase(char *str)
 			return (0);
 	}
 	return (result);
+}
+
+int main(void)
+{
+	char * str = "ABCDq";
+    int res = ft_str_is_uppercase(str);
+
+	(void)res;
+ 
+    return 0;
 }

@@ -25,3 +25,13 @@ char	*ft_strlowcase(char *str)
 	}
 	return (str);
 }
+
+int main(void)
+{
+	char * str = "ABCdeflk";
+    char * res = ft_strlowcase(str);
+
+	(void)res;
+ 
+    return 0;
+}

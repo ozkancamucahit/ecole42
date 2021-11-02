@@ -17,7 +17,7 @@ int	ft_iterative_power(int nb, int power)
 
 	idx = 1;
 	res = 1;
-	if (nb < 0)
+	if (power < 0)
 		return (0);
 	else if (nb == 0 && power == 0)
 		return (1);
@@ -30,5 +30,24 @@ int	ft_iterative_power(int nb, int power)
 		idx++;
 	}
 	return (res);
+}
+
+int main()
+{
+	int res;
+
+	res = ft_iterative_power(-3, -1);
+	res = ft_iterative_power(-3, 0);
+	res = ft_iterative_power(-3, 1);
+	res = ft_iterative_power(-3, 2);
+	res = ft_iterative_power(-3, 3);
+	res = ft_iterative_power(0, -1);
+	res = ft_iterative_power(0, 0);
+	res = ft_iterative_power(0, 2);
+	res = ft_iterative_power(4, -1);
+	res = ft_iterative_power(4, 0);
+	res = ft_iterative_power(4, 1);
+	res = ft_iterative_power(4, 2);
+	(void)res;
 }
 

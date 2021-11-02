@@ -25,3 +25,13 @@ char	*ft_strupcase(char *str)
 	}
 	return (str);
 }
+
+int main(void)
+{
+	char  str[] = "ABCdeflk";
+    char* res = ft_strupcase(str);
+
+	(void)res;
+ 
+    return 0;
+}

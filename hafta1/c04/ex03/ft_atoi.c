@@ -27,7 +27,7 @@ int	ft_atoi(char *src)
 	idx = 0;
 	no_of_minus = 0;
 	number = 0;
-	while (!ft_str_is_number(src[idx]))
+	while (!ft_str_is_number(src[idx]) && src[idx] != '\0')
 	{
 		if (src[idx] == '-')
 			no_of_minus++;
@@ -41,4 +41,38 @@ int	ft_atoi(char *src)
 	if (no_of_minus % 2 != 0)
 		number *= -1;
 	return (number);
+}
+
+int		ft_atoiOK(char *str)
+{
+	int c;
+	int s;
+	int res;
+
+	c = 0;
+	s = 1;
+	res = 0;
+	while ((str[c] >= '\t' && str[c] <= '\r') || str[c] == ' ')
+		c++;
+	while (str[c] == '+' || str[c] == '-')
+	{
+		if (str[c] == '-')
+			s *= -1;
+		c++;
+	}
+	while (str[c] >= '0' && str[c] <= '9')
+	{
+		res = (str[c] - '0') + (res * 10);
+		c++;
+	}
+	return (res * s);
+}
+
+int main()
+{
+	int res, res2;
+	res = ft_atoi(" ");
+	res2 = ft_atoiOK(" ");
+	(void)res;
+	(void)res2;
 }

@@ -12,19 +12,6 @@
 
 #include <stdio.h>
 #include <string.h>
-char	*ft_strcpy(char *dest, char *src)
-{
-	int	idx;
-
-	idx = 0;
-	while (src[idx] != '\0')
-	{
-		dest[idx] = src[idx];
-		idx++;
-	}
-	dest[idx] = '\0';
-	return (dest);
-}
 
 unsigned int	ft_strlen(char *str)
 {
@@ -50,23 +37,22 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	while (src[src_index] != '\0')
 	{
 		if (offset == size - 1)
-			break;
+			break ;
 		dest[offset] = src[src_index];
 		offset++;
 		src_index++;
 	}
 	dest[offset] = '\0';
 	return (d_len + s_len);
-
 }
 
 int main()
 {
-	char first[] = "This is ";
+	char first[30] = "This is ";
     char last[] = "a potentially long string";
-	char buffer[30];
-	ft_strcpy(buffer, first);
-	int res = ft_strlcat(buffer, last, sizeof(buffer));
+	//char buffer[30];
+	//ft_strcpy(buffer, first);
+	int res = ft_strlcat(first, last, 30);
 	
 	printf("res :%d, sizeof first :%ld\n", res, sizeof(first));
 	printf("res str:%s\n", first);

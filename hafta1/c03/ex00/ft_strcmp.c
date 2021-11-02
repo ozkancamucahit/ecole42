@@ -24,3 +24,15 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return ((*us1 > *us2) - (*us1 < *us2));
 }
+
+int main(void)
+{
+	char  str1[] = "ABCdeflA";
+	char  str2[] = "ABCdefl";
+    int res = ft_strcmp(str1, str2);
+
+	(void)res;
+ 
+    return 0;
+}
+

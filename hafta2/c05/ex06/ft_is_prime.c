@@ -9,32 +9,45 @@
 /*   Updated: 2021/10/23 15:48:27 by mozkanca         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	unsigned char	*us1;
-	unsigned char	*us2;
 
-	us1 = (unsigned char *)s1;
-	us2 = (unsigned char *)s2;
-	while (*us1 == *us2 && *us1 != '\0' && n)
+int	ft_is_prime(int nb)
+{
+	int	res;
+	int	divisors;
+	int	idx;
+
+	divisors = 1;
+	idx = 2;
+	res = 0;
+	while (idx <= nb)
 	{
-		us1++;
-		us2++;
-		n--;
+		if ( nb % idx == 0)
+			divisors++;
+		idx++;
 	}
-	if (n == 0)
-		return (0);
-	return ((*us1 > *us2) - (*us1 < *us2));;
+	
+	if (divisors == 2)
+		return (1);
+	return (res);
 }
 
-int main(void)
+int main()
 {
-	char s1[] = "";
-    char s2[] = "hel";
-	
-	int res = ft_strncmp(s1, s2, 3);
+	int res;
+
+	res = ft_is_prime(-10);
+	res = ft_is_prime(-1);
+	res = ft_is_prime(0);
+	res = ft_is_prime(1);
+	res = ft_is_prime(2);
+	res = ft_is_prime(3);
+	res = ft_is_prime(4);
+	res = ft_is_prime(5);
+	res = ft_is_prime(6);
+	res = ft_is_prime(7);
+	res = ft_is_prime(8);
+	res = ft_is_prime(9);
+	res = ft_is_prime(10);
+	res = ft_is_prime(11);
 	(void)res;
- 
-    return 0;
 }

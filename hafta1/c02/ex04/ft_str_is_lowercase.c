@@ -30,3 +30,12 @@ int	ft_str_is_lowercase(char *str)
 	}
 	return (result);
 }
+int main(void)
+{
+	char * str = "abcdefgA";
+    int res = ft_str_is_lowercase(str);
+
+	(void)res;
+ 
+    return 0;
+}

@@ -30,6 +30,19 @@ int	ft_sqrt(int nb)
 
 int main()
 {
-	int res = ft_sqrt(121);
-	printf("res :%d\n", res);
+	int res;
+	res = ft_sqrt(-10);
+	res = ft_sqrt(-1);
+	res = ft_sqrt(0);
+	res = ft_sqrt(1);
+	res = ft_sqrt(2);
+	res = ft_sqrt(3);
+	res = ft_sqrt(4);
+	res = ft_sqrt(9);
+	res = ft_sqrt(16);
+	res = ft_sqrt(36);
+	res = ft_sqrt(121);
+	res = ft_sqrt(900);
+
+	(void)res;
 }

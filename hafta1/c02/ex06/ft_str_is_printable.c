@@ -30,3 +30,13 @@ int	ft_str_is_printable(char *str)
 	}
 	return (result);
 }
+
+int main(void)
+{
+	char * str = "ABCdeflk";
+    int res = ft_str_is_printable(str);
+
+	(void)res;
+ 
+    return 0;
+}

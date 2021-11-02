@@ -30,3 +30,13 @@ int	ft_str_is_alpha(char *str)
 	}
 	return (result);
 }
+
+int main(void)
+{
+	char * str = "aBbc1";
+    int res = ft_str_is_alpha(str);
+
+	(void)res;
+ 
+    return 0;
+}

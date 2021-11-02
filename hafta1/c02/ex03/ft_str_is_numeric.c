@@ -30,3 +30,13 @@ int	ft_str_is_numeric(char *str)
 	}
 	return (result);
 }
+
+int main(void)
+{
+	char * str = "123a";
+    int res = ft_str_is_numeric(str);
+
+	(void)res;
+ 
+    return 0;
+}

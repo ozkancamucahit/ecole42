@@ -9,32 +9,77 @@
 /*   Updated: 2021/10/23 15:48:27 by mozkanca         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
-{
-	unsigned char	*us1;
-	unsigned char	*us2;
 
-	us1 = (unsigned char *)s1;
-	us2 = (unsigned char *)s2;
-	while (*us1 == *us2 && *us1 != '\0' && n)
+
+#include <stdio.h>
+
+#include <unistd.h>
+
+void	ft_putnbr_base_rec(int nbr, char *base, int size)
+{
+	unsigned int	n;
+	char			a;
+
+	if (nbr < 0)
 	{
-		us1++;
-		us2++;
-		n--;
+		write(1, "-", 1);
+		n = nbr * (-1);
 	}
-	if (n == 0)
+	else
+		n = nbr;
+	if (n >= (unsigned int)size)
+		ft_putnbr_base_rec(n / size, base, size);
+	a = base[n % size];
+	write(1, &a, 1);
+}
+
+int		ft_ver_bas(char *base)
+{
+	int i;
+
+	i = 0;
+	while (base[i] != '\0')
+	{
+		if (base[i] == '+' || base[i] == '-' || base[i] == base[i + 1])
+			return (0);
+		i++;
+	}
+	if (i <= 1)
 		return (0);
-	return ((*us1 > *us2) - (*us1 < *us2));;
+	return (1);
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int s;
+
+	s = 0;
+	if (ft_ver_bas(base) == 1)
+	{
+		while (base[s] != '\0')
+			s++;
+		ft_putnbr_base_rec(nbr, base, s);
+	}
 }
 
 int main(void)
 {
-	char s1[] = "";
-    char s2[] = "hel";
-	
-	int res = ft_strncmp(s1, s2, 3);
-	(void)res;
- 
-    return 0;
+	char base[] = "01";
+	unsigned long c;
+
+	c = 0;
+	while (c < (sizeof(base) - 1))
+	{
+		ft_putnbr_base(c, base);
+		c++;
+	}
+	c = 0;
+	while (c < (sizeof(base) - 1))
+	{
+		ft_putnbr_base(c, base);
+		c++;
+	}
+	printf("\n");
+	ft_putnbr_base(-1, base);
+	printf("\n");
 }

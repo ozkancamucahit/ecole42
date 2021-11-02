@@ -12,7 +12,7 @@
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int	idx;
+	unsigned int	idx;
 
 	idx = 0;
 	while (src[idx] != '\0' && idx < n)
@@ -26,4 +26,16 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n)
 		idx++;
 	}
 	return (dest);
+}
+
+int main(void)
+{
+    char* source = "Uzun bir string";
+    char destination[7];
+ 
+    unsigned int num = 6;
+ 
+    ft_strncpy(destination, source, num);
+ 
+    return 0;
 }
