@@ -19,7 +19,7 @@ void	ft_print_numbers(void)
 	start_digit = 48;
 	while (start_digit <= 57)
 	{
-		write(1, &start_digit, sizeof (int));
+		write(1, &start_digit, sizeof (char));
 		start_digit++;
 	}
 }

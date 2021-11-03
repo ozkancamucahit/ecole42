@@ -91,7 +91,7 @@ int main()
 	res2 = ft_find_next_primeOK(9)  ;
 	res = ft_find_next_prime(10) ;
 	res2 = ft_find_next_primeOK(10) ;
-	res = ft_find_next_prime(11) ;
-	res2 = ft_find_next_primeOK(11) ;
+	res = ft_find_next_prime(15) ;
+	res2 = ft_find_next_primeOK(15) ;
 	(void)res;
 }

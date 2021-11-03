@@ -12,8 +12,7 @@
 				"${file}",
 				"-g",
 				"-o",
-				"${fileDirname}/${fileBasenameNoExtension}.out",
-				
+				"${fileDirname}/${fileBasenameNoExtension}.out"
 			],
 			"options": {
 				"cwd": "${fileDirname}"

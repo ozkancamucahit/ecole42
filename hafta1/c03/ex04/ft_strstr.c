@@ -29,14 +29,11 @@ char	*ft_strstr(char *str, char *to_find)
     ref = to_find;
 	if (len == 0)
 		return (str);
-    while(*str && *ref)
+    while(*str)
     {
-        if (*str++ == *ref)
-            ref++;
-        if(*ref == '\0')
-            return (str - len);
-        if (len == (ref - to_find))
-            ref = to_find;
+		if ((*str == *to_find) && compare(str, to_find))
+			return (str);
+		str++;
     }
     return ((char*)0);
 }

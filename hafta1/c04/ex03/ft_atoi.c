@@ -43,7 +43,7 @@ int	ft_atoi(char *src)
 	return (number);
 }
 
-int		ft_atoiOK(char *str)
+int	ft_atoiOK(char *str)
 {
 	int c;
 	int s;
@@ -71,8 +71,8 @@ int		ft_atoiOK(char *str)
 int main()
 {
 	int res, res2;
-	res = ft_atoi(" ");
-	res2 = ft_atoiOK(" ");
+	res = ft_atoi("\t \rlol");
+	res2 = ft_atoiOK("\t \rlol");
 	(void)res;
 	(void)res2;
 }
