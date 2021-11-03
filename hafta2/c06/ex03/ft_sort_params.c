@@ -44,11 +44,11 @@ int	ft_strcmp(char *str1, char *str2)
 
 void	ft_swap(char **a, char **b)
 {
-	char	temp;
+	char	*temp;
 
-	temp = **a;
-	**a = **b;
-	**b = temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }
 
 void	ft_sort_char(char **arr, int size)
