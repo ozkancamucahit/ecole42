@@ -10,47 +10,75 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, unsigned int n)
+#include <unistd.h>
+
+void	ft_putstr(char *str)
 {
-	unsigned int	idx;
+	int	idx;
 
 	idx = 0;
-	while (src[idx] != '\0' && idx < n)
+	while (str[idx] != '\0')
 	{
-		dest[idx] = src[idx];
+		write(1, &str[idx], sizeof(char));
 		idx++;
 	}
-	while (idx < n)
-	{
-		dest[idx] = '\0';
-		idx++;
-	}
-	return (dest);
+	write(1, "\n", sizeof(char));
 }
 
-int	ft_strlen(char *str)
+int	ft_strcmp(char *str1, char *str2)
 {
-	int	len;
+	unsigned char *us1;
+	unsigned char *us2;
+	int	res;
 
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
+	us1 = (unsigned char *)str1;
+	us2 = (unsigned char *)str2;
+	while (*us1 && *us1 == *us2)
+	{
+		us1++;
+		us2++;
+	}
+	res = (*us1 > *us2) - (*us1 < *us2);
+	return (res);
 }
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+void	ft_swap(char **a, char **b)
 {
-	unsigned int	len1;
-	unsigned int	len2;
+	char	temp;
 
-	len1 = ft_strlen(src);
-	len2 = ft_strlen(dest);
-	if (len2 < nb)
-		ft_strncpy(&dest[len1], src, nb);
-	else
+	temp = **a;
+	**a = **b;
+	**b = temp;
+}
+
+void	ft_sort_char(char **arr, int size)
+{
+	int	iter;
+	int	elem;
+
+	iter = 0;
+	while (iter < size)
 	{
-		ft_strncpy(&dest[len1], src, nb);
-		dest[len1 + nb] = '\0';
+		elem = 1;
+		while (elem < size - 1)
+		{
+			if (ft_strcmp(arr[elem], arr[elem + 1]) == 1)
+				ft_swap((&arr[elem]), (&arr[elem + 1]));
+			elem++;
+		}
+		iter++;
 	}
-	return (dest);
+	elem = 1;
+	while (elem < size)
+	{
+		ft_putstr(arr[elem]);
+		elem++;
+	}
+	
+}
+
+int	main(int argc, char **argv)
+{
+	ft_sort_char(argv, argc);
+	return (0);
 }

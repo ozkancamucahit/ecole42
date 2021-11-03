@@ -10,31 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_strcmp(char *s1, char *s2)
+void	ft_putstr(char *str)
 {
-	unsigned char	*us1;
-	unsigned char	*us2;
+	int	idx;
 
-	us1 = (unsigned char *)s1;
-	us2 = (unsigned char *)s2;
-	while (*us1 == *us2 && *us1 != '\0')
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		us1++;
-		us2++;
+		write(1, &str[idx], sizeof(char));
+		idx++;
 	}
-	return ((*us1 > *us2) - (*us1 < *us2));
+	write(1, "\n", sizeof(char));
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	int	res;
-	int	res2;
+	int	idx;
 
-	res = strcmp("bb", "aa");
-	printf("res with STRCMP :%d\n", res);
-	res2 = ft_strcmp("bb", "aa");
-	printf("res with OWN :%d\n", res2);
+	idx = 1;
+	while (idx < argc)
+	{
+		ft_putstr(argv[idx]);
+		idx++;
+	}
+	return (0);
 }

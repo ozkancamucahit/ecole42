@@ -10,42 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include <unistd.h>
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+void	ft_putstr(char *str)
 {
-	unsigned char	*us1;
-	unsigned char	*us2;
+	int	idx;
 
-	us1 = (unsigned char *)s1;
-	us2 = (unsigned char *)s2;
-	while (n > 0)
+	idx = 0;
+	while (str[idx] != '\0')
 	{
-		if (*us1 != *us2)
-			if (*us1 < *us2)
-				return (-1);
-		else
-			return (1);
-		else if (*us1 == '\0')
-			return (0);
-		us1++;
-		us2++;
-		n--;
+		write(1, &str[idx], sizeof(char));
+		idx++;
 	}
-	return (0);
+	write(1, "\n", sizeof(char));
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	int	res;
-	int	res2;
-	int	res3;
-
-	res = strncmp("klmnA", "klmnC", 4);
-	printf("res with STRNCMP :%d\n", res);
-	res2 = ft_strncmp("klmnA", "klmnC", 4);
-	printf("res with OWN :%d\n", res2);
-	res3 = strncmpOwn("klmnA", "klmnC", 4);
-	printf("res with OWN :%d\n", res3);
+	ft_putstr(argv[0]);
+	(void)argc;
+	return (0);
 }

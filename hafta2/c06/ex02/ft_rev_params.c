@@ -10,45 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	len;
+#include <unistd.h>
 
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
+void	ft_putstr(char *str)
+{
+	int	idx;
+
+	idx = 0;
+	while (str[idx] != '\0')
+	{
+		write(1, &str[idx], sizeof(char));
+		idx++;
+	}
+	write(1, "\n", sizeof(char));
 }
 
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+int	main(int argc, char **argv)
 {
-	char	*d;
-	char	*s;
-	unsigned int	dlen;
-	unsigned int	n;
+	int	idx;
 
-	n = size;
-	s = src;
-	d = dest;
-	while (n != 0 && *d != '\0')
+	idx = argc - 1;
+	while (idx > 0)
 	{
-		d++;
-		n--;
+		ft_putstr(argv[idx]);
+		idx--;
 	}
-	dlen = d - dest;
-	n = size - dlen;
-	if (n == 0)
-		return (dlen + ft_strlen(s));
-	while (*s != '\0')
-	{
-		if (n != 1)
-		{
-			*d = *s;
-			d++;
-			n--;
-		}
-		s++;
-	}
-	*d = '\0';
-	return (dlen + (s - src));	
+	return (0);
 }
