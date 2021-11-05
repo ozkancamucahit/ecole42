@@ -28,12 +28,35 @@ int	ft_sqrt(int nb)
 	return (0);
 }
 
+int		ft_sqrtOK(int nb)
+{
+	int	n;
+
+	n = 1;
+	if (nb > 0)
+	{
+		while (n * n <= nb)
+		{
+			if (n * n == nb)
+				return (n);
+			else if (n >= 46341)
+				return (0);
+			n++;
+		}
+	}
+	return (0);
+}
+
 int main()
 {
-	int res;
+	int res, res2;
+	res = ft_sqrt(2147483647);
+	res2 = ft_sqrtOK(2147483647);
 	res = ft_sqrt(-10);
+	res2 = ft_sqrtOK(-10);
 	res = ft_sqrt(-1);
 	res = ft_sqrt(0);
+	res2 = ft_sqrtOK(0);
 	res = ft_sqrt(1);
 	res = ft_sqrt(2);
 	res = ft_sqrt(3);

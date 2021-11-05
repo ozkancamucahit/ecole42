@@ -10,60 +10,50 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
-{
-	int	res;
-	int	divisors;
-	int	idx;
+#include <stdio.h>
+#include <string.h>
 
-	divisors = 1;
-	idx = 2;
-	res = 0;
-	while (idx <= nb)
-	{
-		if ( nb % idx == 0)
-			divisors++;
-		idx++;
-	}
-	
-	if (divisors == 2)
-		return (1);
-	return (res);
+unsigned int	ft_strlen(char *str)
+{
+	unsigned int	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
 }
 
-int	ft_is_primeOK(int nb)
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int n;
+	unsigned int	d_len;
+	unsigned int	s_len;
+	unsigned int	offset;
+	unsigned int	src_index;
 
-	n = 2;
-	if (nb < 2)
-		return (0);
-	while (n <= nb / 2)
+	d_len = ft_strlen(dest);
+	s_len = ft_strlen(src);
+	offset = d_len;
+	src_index = 0;
+	while (src[src_index] != '\0')
 	{
-		if (nb % n == 0)
-			return (0);
-		n++;
+		if (offset == size - 1)
+			break ;
+		dest[offset] = src[src_index];
+		offset++;
+		src_index++;
 	}
-	return (1);
+	dest[offset] = '\0';
+	return (d_len + s_len);
 }
 
 int main()
 {
-	int res;
-
-	res = ft_is_prime(-10);
-	res = ft_is_prime(-1);
-	res = ft_is_prime(0);
-	res = ft_is_prime(1);
-	res = ft_is_prime(2);
-	res = ft_is_prime(3);
-	res = ft_is_prime(4);
-	res = ft_is_prime(5);
-	res = ft_is_prime(6);
-	res = ft_is_prime(7);
-	res = ft_is_prime(8);
-	res = ft_is_prime(9);
-	res = ft_is_prime(10);
-	res = ft_is_prime(11);
-	(void)res;
+	char first[30] = "This is ";
+    char last[] = "a potentially long string";
+	//char buffer[30];
+	//ft_strcpy(buffer, first);
+	int res = ft_strlcat(first, last, 30);
+	
+	printf("res :%d, sizeof first :%ld\n", res, sizeof(first));
+	printf("res str:%s\n", first);
 }

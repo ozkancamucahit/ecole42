@@ -10,60 +10,52 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
 {
-	int	res;
-	int	divisors;
+	int	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
+
+char	*ft_str_cpy(char *dest, char *src)
+{
 	int	idx;
 
-	divisors = 1;
-	idx = 2;
-	res = 0;
-	while (idx <= nb)
+	idx = 0;
+	while (src[idx] != '\0')
 	{
-		if ( nb % idx == 0)
-			divisors++;
+		dest[idx] = src[idx];
 		idx++;
 	}
-	
-	if (divisors == 2)
-		return (1);
-	return (res);
+	dest[idx] = '\0';
+	return (dest);
 }
 
-int	ft_is_primeOK(int nb)
+char	*ft_strdup(char *src)
 {
-	int n;
+	char	*dup;
+	int		len;
 
-	n = 2;
-	if (nb < 2)
-		return (0);
-	while (n <= nb / 2)
-	{
-		if (nb % n == 0)
-			return (0);
-		n++;
-	}
-	return (1);
+	dup = NULL;
+	len = ft_strlen(src);
+	dup = (char *)malloc(1 + sizeof(char) * len);
+	if (dup == NULL)
+		return ((char *) NULL);
+	dup = ft_str_cpy(dup, src);
+	return (dup);
 }
 
-int main()
+int main(void)
 {
-	int res;
-
-	res = ft_is_prime(-10);
-	res = ft_is_prime(-1);
-	res = ft_is_prime(0);
-	res = ft_is_prime(1);
-	res = ft_is_prime(2);
-	res = ft_is_prime(3);
-	res = ft_is_prime(4);
-	res = ft_is_prime(5);
-	res = ft_is_prime(6);
-	res = ft_is_prime(7);
-	res = ft_is_prime(8);
-	res = ft_is_prime(9);
-	res = ft_is_prime(10);
-	res = ft_is_prime(11);
-	(void)res;
+	char lol[] = "-123";
+	char *str = ft_strdup(lol);
+	str[0] = 'a';
+	(void)str;
+    return 0;
 }
+

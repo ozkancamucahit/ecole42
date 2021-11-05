@@ -10,60 +10,37 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_prime(int nb)
+#include<stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	int	res;
-	int	divisors;
+	int	len;
 	int	idx;
 
-	divisors = 1;
-	idx = 2;
-	res = 0;
-	while (idx <= nb)
+	if (min >= max)
 	{
-		if ( nb % idx == 0)
-			divisors++;
+		*range = NULL;
+		return (0);
+	}
+	len = max - min;
+	*range = (int *)malloc(len * sizeof (int));
+	if (*range == NULL)
+		return (-1);
+	idx = 0;
+	while (min < max)
+	{
+		(*range)[idx] = min;
+		min++;
 		idx++;
 	}
-	
-	if (divisors == 2)
-		return (1);
-	return (res);
+	return (len);
 }
 
-int	ft_is_primeOK(int nb)
+int main(void)
 {
-	int n;
-
-	n = 2;
-	if (nb < 2)
-		return (0);
-	while (n <= nb / 2)
-	{
-		if (nb % n == 0)
-			return (0);
-		n++;
-	}
-	return (1);
-}
-
-int main()
-{
-	int res;
-
-	res = ft_is_prime(-10);
-	res = ft_is_prime(-1);
-	res = ft_is_prime(0);
-	res = ft_is_prime(1);
-	res = ft_is_prime(2);
-	res = ft_is_prime(3);
-	res = ft_is_prime(4);
-	res = ft_is_prime(5);
-	res = ft_is_prime(6);
-	res = ft_is_prime(7);
-	res = ft_is_prime(8);
-	res = ft_is_prime(9);
-	res = ft_is_prime(10);
-	res = ft_is_prime(11);
+	int *arr;
+	int res = ft_ultimate_range(&arr, 0, 0);
 	(void)res;
+ 
+    return 0;
 }
