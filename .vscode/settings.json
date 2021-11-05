@@ -2,6 +2,9 @@
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
         "*.html": "html",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "ft_boolean.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c"
     }
 }

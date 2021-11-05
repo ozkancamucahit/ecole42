@@ -9,9 +9,15 @@
 /*   Updated: 2021/10/23 15:48:27 by mozkanca         ###   ########.tr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdlib.h>
-#include <stdio.h>
+//#include "ft_stock_str.h"
+
+typedef struct s_stock_str
+{
+	int		size;
+	char	*str;
+	char	*copy;
+}t_stock_str;
 
 int	ft_strlen(char *str)
 {
@@ -21,24 +27,6 @@ int	ft_strlen(char *str)
 	while (str[len] != '\0')
 		len++;
 	return (len);
-}
-
-int	tot_chars(char **str, int size)
-{
-	int	idx;
-	int	no_of_chars;
-
-	idx = 0;
-	no_of_chars = 0;
-	while (size > 0)
-	{
-		no_of_chars += ft_strlen(str[idx]);
-		idx++;
-		size--;
-	}
-	(void)str;
-	(void)size;
-	return (no_of_chars);
 }
 
 void	ft_str_cpy(char **dest, char **src)
@@ -51,42 +39,33 @@ void	ft_str_cpy(char **dest, char **src)
 		(*dest)[idx] = (*src)[idx];
 		idx++;
 	}
+	(*dest)[idx] = '\0';
 }
 
-char	*ft_strjoin(int size, char **strs, char *sep)
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	char	*res;
-	int		no_of_chars;
-	int		idx;
-	char	*temp;
+	struct s_stock_str	*res;
+	int					idx;
+	int					len;
 
-	no_of_chars = 0;
-	if (size == 0)
-	{
-		res = (char *)malloc(sizeof (char));
-		res[0] = '\0';
-		return (res);
-	}
-	no_of_chars = tot_chars(strs, size);
-	no_of_chars = size + no_of_chars;
-	res = (char *)malloc(no_of_chars * sizeof (char));
-	temp = res;
+	res = (struct s_stock_str *)malloc((ac + 1) * sizeof (struct s_stock_str));
 	idx = 0;
-	while (idx < size)
+	while (idx < ac)
 	{
-		ft_str_cpy(&temp, &strs[idx]);
-		temp += ft_strlen(strs[idx]);
-		if (idx != size -1)
-			{
-				ft_str_cpy(&temp, &sep);
-				temp++;
-			}
+		len = ft_strlen(av[idx]);
+		res[idx].size = len;
+		res[idx].str = (char *)malloc((len + 1) * sizeof (char));
+		res[idx].copy = (char *)malloc((len + 1) * sizeof (char));
+		ft_str_cpy(&res[idx].str, &av[idx]);
+		ft_str_cpy(&res[idx].copy, &res[idx].str);
 		idx++;
 	}
-	res[no_of_chars - 1] = '\0';
+	res[idx].str = (char *)malloc(sizeof (char));
+	*(res[idx].str) = '\0';
 	return (res);
 }
 
+#include <stdio.h>
 int main(void)
 {
 	char ** deneme = (char **)malloc(6 * sizeof(char*));
@@ -98,7 +77,9 @@ int main(void)
 		deneme[i] = (char*)malloc(ft_strlen(example[i]) * sizeof(char));
 		deneme[i] = example[i];
 	}
-	char * res = ft_strjoin(6, deneme, ",");
+	//char * res = ft_strjoin(6, deneme, ",");
+	struct s_stock_str	*res;
+	res = ft_strs_to_tab(6, example);
 	(void)example;
 	(void)deneme;
 	(void)res;
