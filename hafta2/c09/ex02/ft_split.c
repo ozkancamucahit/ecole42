@@ -10,37 +10,58 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
+#include <stdlib.h>
 
-int	ft_ultimate_range(int **range, int min, int max)
+int	is_delim(char ch, char *char_set)
 {
-	int	len;
-	int	idx;
+	int	res;
 
-	if (min >= max)
+	res = 0;
+	while (*char_set)
 	{
-		*range = NULL;
-		return (0);
+		if (ch == *char_set)
+		{
+			res = 1;
+			return (res);
+		}
+		char_set++;
 	}
-	len = max - min;
-	*range = (int *)malloc(len * sizeof (int));
-	if (*range == NULL)
-		return (-1);
-	idx = 0;
-	while (min < max)
-	{
-		(*range)[idx] = min;
-		min++;
-		idx++;
-	}
-	return (len);
+	return (0);
 }
+
+int	no_of_delims(char *str, char *delims)
+{
+	int	res;
+
+	res = 0;
+	while (*str)
+	{
+		if (is_delim(*str, delims))
+			res++;
+		str++;
+	}
+	return (res);
+}
+
+char	**ft_split(char *str, char *charset)
+{
+	int	delims;
+
+	delims = no_of_delims(str, charset);
+
+	(void)delims;
+	return (0);
+}
+
 
 int main(void)
 {
-	int *arr;
-	int res = ft_ultimate_range(&arr, -3, 0);
+	char *deneme = (char *)malloc(16 * sizeof(char));
+	deneme = "abc,def-klm?moc";
+	char * delims = ",-?";
+
+	char **res = ft_split(deneme, delims);
+	(void)deneme;
 	(void)res;
- 
     return 0;
 }

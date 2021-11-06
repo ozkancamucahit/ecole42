@@ -27,7 +27,9 @@ int	tot_chars(char **str, int size)
 {
 	int	idx;
 	int	no_of_chars;
+	int	temp;
 
+	temp = size;
 	idx = 0;
 	no_of_chars = 0;
 	while (size > 0)
@@ -36,9 +38,7 @@ int	tot_chars(char **str, int size)
 		idx++;
 		size--;
 	}
-	(void)str;
-	(void)size;
-	return (no_of_chars);
+	return (no_of_chars + temp);
 }
 
 void	ft_str_cpy(char **dest, char **src)
@@ -53,6 +53,13 @@ void	ft_str_cpy(char **dest, char **src)
 	}
 }
 
+char	*not_valid(char **res)
+{
+	*res = (char *)malloc(sizeof (char));
+	(*res)[0] = '\0';
+	return (*res);
+}
+
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*res;
@@ -62,13 +69,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 	no_of_chars = 0;
 	if (size == 0)
-	{
-		res = (char *)malloc(sizeof (char));
-		res[0] = '\0';
-		return (res);
-	}
+		return (not_valid(&res));
 	no_of_chars = tot_chars(strs, size);
-	no_of_chars = size + no_of_chars;
 	res = (char *)malloc(no_of_chars * sizeof (char));
 	temp = res;
 	idx = 0;
@@ -76,11 +78,11 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	{
 		ft_str_cpy(&temp, &strs[idx]);
 		temp += ft_strlen(strs[idx]);
-		if (idx != size -1)
-			{
-				ft_str_cpy(&temp, &sep);
-				temp++;
-			}
+		if (idx != size - 1)
+		{
+			ft_str_cpy(&temp, &sep);
+			temp++;
+		}
 		idx++;
 	}
 	res[no_of_chars - 1] = '\0';

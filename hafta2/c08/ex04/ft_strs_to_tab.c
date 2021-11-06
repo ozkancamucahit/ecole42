@@ -48,7 +48,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	int					idx;
 	int					len;
 
-	res = (struct s_stock_str *)malloc((ac + 1) * sizeof (struct s_stock_str));
+	res = (struct s_stock_str *)malloc(ac * sizeof (struct s_stock_str));
 	idx = 0;
 	while (idx < ac)
 	{
@@ -58,10 +58,12 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 		res[idx].copy = (char *)malloc((len + 1) * sizeof (char));
 		ft_str_cpy(&res[idx].str, &av[idx]);
 		ft_str_cpy(&res[idx].copy, &res[idx].str);
+		if (idx == ac - 1)
+		{
+			res[idx].str = NULL;
+		}
 		idx++;
 	}
-	res[idx].str = (char *)malloc(sizeof (char));
-	*(res[idx].str) = '\0';
 	return (res);
 }
 
@@ -70,7 +72,7 @@ int main(void)
 {
 	char ** deneme = (char **)malloc(6 * sizeof(char*));
 	char* example[] = {"deneme1", "deneme2", "deneme3", "deneme4",
-	"deneme5","deneme6"};
+	"deneme5","deneme61"};
 
 	for (size_t i = 0; i < 6; i++)
 	{
