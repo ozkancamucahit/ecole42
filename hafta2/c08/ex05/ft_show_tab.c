@@ -126,22 +126,20 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	int					idx;
 	int					len;
 
-	res = (struct s_stock_str *)malloc(ac * sizeof (struct s_stock_str));
+	res = (t_stock_str *)malloc((ac + 1) * sizeof (t_stock_str));
+	if (!res)
+		return (0);
 	idx = 0;
 	while (idx < ac)
 	{
 		len = ft_strlen(av[idx]);
 		res[idx].size = len;
-		res[idx].str = (char *)malloc((len + 1) * sizeof (char));
+		res[idx].str = av[idx];
 		res[idx].copy = (char *)malloc((len + 1) * sizeof (char));
-		ft_str_cpy(&res[idx].str, &av[idx]);
 		ft_str_cpy(&res[idx].copy, &res[idx].str);
-		if (idx == ac - 1)
-		{
-			res[idx].str = NULL;
-		}
 		idx++;
 	}
+	res[idx].str = NULL;
 	return (res);
 }
 
