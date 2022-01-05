@@ -1,13 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   libft_creator.sh                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mucahit <42istanbul.com.tr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 20:59:22 by mucahit           #+#    #+#             */
-/*   Updated: 2021/11/07 21:00:10 by mucahit          ###   ########.tr       */
-/*                                                                            */
-/* ************************************************************************** */
+#!/bin/bash
 
-
+rm -f libft.a
+find . -maxdepth 1 -name "*.c" -type f  -exec gcc -Wall -Werror -Wextra -c {} \;
+ar -rcs libft.a *.o
+find . -maxdepth 1 -name "*.o" -type f  -delete

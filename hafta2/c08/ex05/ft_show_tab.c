@@ -151,11 +151,13 @@ int main(void)
 
 	for (size_t i = 0; i < 6; i++)
 	{
-		deneme[i] = (char*)malloc(ft_strlen(example[i]) * sizeof(char));
+		//deneme[i] = (char*)malloc(ft_strlen(example[i]) * sizeof(char));
 		deneme[i] = example[i];
+		//ft_str_cpy(&deneme[i], &example[i]);
 	}
 	struct s_stock_str	*res;
 	res = ft_strs_to_tab(6, example);
+	example[0] = "lol";
 	ft_show_tab(res);
 	(void)example;
 	(void)deneme;

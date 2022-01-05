@@ -1,8 +1,8 @@
 
-CC = cc
-CFLAGS = -c -Wall -Wextra -Werror
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -c
 AR = ar
-AR_FLAGS = rc
+AR_FLAGS = rcs
 LIBNAME = libft.a
 HEADERS = -Iincludes/
 
@@ -15,13 +15,13 @@ srcs/ft_strcmp.c
 
 OBJS = ${C_SOURCES:.c=.o}
 
-all:	${OBJS}
+.c.o:
+	${CC} ${CFLAGS} $< -o ${<:.c=.o} ${HEADERS}
+
+${LIBNAME}: ${OBJS}
 	${AR} ${AR_FLAGS} ${LIBNAME} ${OBJS}
 
-${OBJS}: ${C_SOURCES}
-	${CC} ${CFLAGS} ${HEADERS} $< -o $@
-
-libft.a:	all
+all:	${LIBNAME}
 
 clean:
 	rm -f ${OBJS}
@@ -31,4 +31,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY:	all clean fclean re
+.PHONY:	all clean fclean re .c.o

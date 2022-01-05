@@ -27,6 +27,8 @@ int	ft_atoi(char *src)
 	idx = 0;
 	no_of_minus = 0;
 	number = 0;
+	while ((src[idx] >= '\t' && src[idx] <= '\r') || src[idx] == ' ')
+		idx++;
 	while (!ft_str_is_number(src[idx]) && src[idx] != '\0')
 	{
 		if (src[idx] == '-')
@@ -42,6 +44,14 @@ int	ft_atoi(char *src)
 		number *= -1;
 	return (number);
 }
+
+
+typedef struct s_list
+{
+	int     data;
+	struct s_list  *next;
+}t_list;
+
 
 int	ft_atoiOK(char *str)
 {
@@ -71,8 +81,10 @@ int	ft_atoiOK(char *str)
 int main()
 {
 	int res, res2;
-	res = ft_atoi("\t \rlol");
-	res2 = ft_atoiOK("\t \rlol");
+	res = ft_atoi("123");
+	res2 = ft_atoiOK("123");
 	(void)res;
 	(void)res2;
+	t_list lol;
+	lol.next
 }
